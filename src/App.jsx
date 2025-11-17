@@ -3,7 +3,7 @@ import './App.css'
 import { CreateUser } from './Components/CreateUser';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginUser } from './Components/LoginUser';
-import { HomePage } from './Components/HomePage';
+import { Logout } from './Components/Logout';
 function App() {
 
   return (
@@ -12,7 +12,7 @@ function App() {
        <Routes>
           <Route path="/" element={<CreateUser />} />
           <Route path="/login" element={<LoginUser />} />
-          <Route path="/home" element={<HomePage/>}/>
+          <Route path="/logout" element={<Logout/>}/>
         </Routes>
      </BrowserRouter>
     </div>
