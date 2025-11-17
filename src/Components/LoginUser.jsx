@@ -3,6 +3,7 @@ import styles from "../styles/CreateUser.module.scss"
 import {useNavigate} from "react-router-dom"
 import axios from "axios";
 
+
 // This route is for fastApi
 // http://127.0.0.1:8000/loginUser
 
@@ -17,7 +18,14 @@ export const LoginUser = ()=>{
         return /^[0-9]+$/.test(num);
       };
     const apiCall = async () => {
-        return await axios.post("http://127.0.0.1:8000/loginUser", {mobile,otp });
+        try{
+          const response = await axios.post("http://localhost:8000/loginUser", {mobile,otp });
+          const result = response.data;
+          localStorage.setItem("token",result.token)
+          return result;
+        }catch(error){
+          alert("api call error")
+        }
       };
     
       const loginHandler = async () => {
@@ -35,9 +43,8 @@ export const LoginUser = ()=>{
         
           await apiCall();
           alert("User Login successfully");
-          navigate("/home");
+          navigate("/logout");
         } catch (error) {
-          console.error(error);
           alert("Error login user");
         }
       };

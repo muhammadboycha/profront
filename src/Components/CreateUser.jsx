@@ -19,7 +19,7 @@ export const CreateUser = () => {
 
   const apiCall = async () => {
    try{
-    const response = await axios.post("http://127.0.0.1:8000/createUser", { name, mobile });
+    const response = await axios.post("http://localhost:8000/createUser", { name, mobile });
     const result = response.data;
     alert(result.message)
     return result;
